@@ -1,0 +1,22 @@
+[Unit]
+Description=UNICON Telegram Report Bot
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=uniconbot
+Group=uniconbot
+WorkingDirectory=/opt/unicon-report-bot
+ExecStart=/opt/unicon-report-bot/bin/unicon-report-bot
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
